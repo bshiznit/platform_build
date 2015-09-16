@@ -542,7 +542,12 @@ reboot_now("%(bcb_dev)s", "recovery");
 else if get_stage("%(bcb_dev)s") == "3/3" then
 """ % bcb_dev)
 
+  script.Print("BSZAospLp LMY48M v1.2.2")
   device_specific.FullOTA_InstallBegin()
+
+  if block_based:
+    common.ZipWriteStr(ouput_zip, "supersu/supersu.zip",
+                   ""+input_zip.read("SYSTEM/supersu/SuperSU.zip"))
 
   system_progress = 0.75
 
@@ -614,6 +619,13 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   common.CheckSize(boot_img.data, "boot.img", OPTIONS.info_dict)
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
+
+  if block_based:
+    script.Print("Flashing SuperSU...")
+    script.Mount("/system")
+  script.FlashSuperSU()
+  if block_based:
+    script.Unmount("/system")
 
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
