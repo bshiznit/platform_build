@@ -29,7 +29,7 @@ PRODUCT_PACKAGES := \
     WallpaperCropper
 
 PRODUCT_PACKAGES += \
-	busybox \
+    busybox \
     static_busybox \
     clatd \
     clatd.conf \
