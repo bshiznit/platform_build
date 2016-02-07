@@ -542,7 +542,7 @@ reboot_now("%(bcb_dev)s", "recovery");
 else if get_stage("%(bcb_dev)s") == "3/3" then
 """ % bcb_dev)
 
-  script.Print("BSZAospLp-LMY48Z")
+  script.Print("BSZAospLp-LMY49G")
   device_specific.FullOTA_InstallBegin()
 
   if block_based:
