@@ -613,7 +613,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("Target: %s" % CalculateFingerprint(
       oem_props, oem_dict, OPTIONS.info_dict))
 
-  script.Print("Noougies-NRD90M")
+  script.Print("Noougies-$(BUILD_ID)")
   device_specific.FullOTA_InstallBegin()
 
   if block_based:
@@ -694,11 +694,11 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
 
   if block_based:
-  script.ShowProgress(0.05, 5)
-  script.WriteRawImage("/boot", "boot.img")
-
     script.Print("Flashing SuperSU...")
   script.FlashSuperSU()
+
+  script.ShowProgress(0.05, 5)
+  script.WriteRawImage("/boot", "boot.img")
 
   script.ShowProgress(0.2, 10)
   device_specific.FullOTA_InstallEnd()
