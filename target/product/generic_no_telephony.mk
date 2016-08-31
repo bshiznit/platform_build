@@ -31,8 +31,8 @@ PRODUCT_PACKAGES := \
     WallpaperCropper
 
 PRODUCT_PACKAGES += \
-    toybox \
-    static_toybox \
+    busybox \
+    static_busybox \
     clatd \
     clatd.conf \
     pppd \
