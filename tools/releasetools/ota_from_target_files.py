@@ -600,7 +600,7 @@ reboot_now("%(bcb_dev)s", "recovery");
 else if get_stage("%(bcb_dev)s") == "3/3" then
 """ % bcb_dev)
 
-  script.Print("Noougies-NRD90M")
+  script.Print("Noougies-NRD90R")
   # Dump fingerprints
   script.Print("Target: %s" % CalculateFingerprint(
       oem_props, oem_dict, OPTIONS.info_dict))
