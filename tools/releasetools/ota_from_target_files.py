@@ -608,6 +608,10 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
   device_specific.FullOTA_InstallBegin()
 
+  if block_based:
+    common.ZipWriteStr(output_zip, "system/supersu/supersu.zip",
+                   ""+input_zip.read("SYSTEM/supersu/SuperSU.zip"))
+
   system_progress = 0.75
 
   if OPTIONS.wipe_user_data:
@@ -675,6 +679,10 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   common.CheckSize(boot_img.data, "boot.img", OPTIONS.info_dict)
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
+
+  if block_based:
+    script.Print("Flashing SuperSU...")
+  script.FlashSuperSU()
 
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
