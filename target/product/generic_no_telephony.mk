@@ -32,7 +32,6 @@ PRODUCT_PACKAGES := \
 
 PRODUCT_PACKAGES += \
     busybox \
-    static_busybox \
     clatd \
     clatd.conf \
     pppd \
