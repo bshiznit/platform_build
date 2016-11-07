@@ -31,6 +31,7 @@ PRODUCT_PACKAGES := \
     WallpaperCropper
 
 PRODUCT_PACKAGES += \
+    busybox \
     clatd \
     clatd.conf \
     pppd \
