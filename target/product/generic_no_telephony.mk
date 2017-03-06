@@ -22,7 +22,6 @@ PRODUCT_PACKAGES := \
     BluetoothMidiService \
     Camera2 \
     Gallery2 \
-    Music \
     MusicFX \
     OneTimeInitializer \
     Provision \
@@ -31,6 +30,7 @@ PRODUCT_PACKAGES := \
     WallpaperCropper
 
 PRODUCT_PACKAGES += \
+    busybox \
     clatd \
     clatd.conf \
     pppd \
