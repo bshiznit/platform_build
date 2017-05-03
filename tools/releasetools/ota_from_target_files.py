@@ -618,7 +618,7 @@ reboot_now("%(bcb_dev)s", "recovery");
 else if get_stage("%(bcb_dev)s") == "3/3" then
 """ % bcb_dev)
 
-  script.Print("Noougies-N4F26T")
+  script.Print("Noougies-N4F26X")
   # Dump fingerprints
   script.Print("Target: %s" % CalculateFingerprint(
       oem_props, oem_dict, OPTIONS.info_dict))
@@ -697,6 +697,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
 
+  script.Print("Don't forget GApps and a root solution (if you so choose)!")
+
   script.ShowProgress(0.2, 10)
   device_specific.FullOTA_InstallEnd()
 
@@ -705,12 +707,12 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   script.UnmountAll()
   #SuperSu stuff here
-  script.AppendExtra('run_program("/sbin/busybox", "sleep", "5");')
-  script.Print("8  [x] Installing SuperSU...   ")
-  script.Print("")
-  script.AppendExtra('package_extract_dir("supersu", "/tmp/supersu");')
-  script.AppendExtra('run_program("/sbin/busybox", "unzip", "/tmp/supersu/supersu.zip", "META-INF/com/google/android/*", "-d", "/tmp/supersu");')
-  script.AppendExtra('run_program("/sbin/busybox", "sh", "/tmp/supersu/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/supersu/supersu.zip");')
+  #script.AppendExtra('run_program("/sbin/busybox", "sleep", "5");')
+  #script.Print("8  [x] Installing SuperSU...   ")
+  #script.Print("")
+  #script.AppendExtra('package_extract_dir("supersu", "/tmp/supersu");')
+  #script.AppendExtra('run_program("/sbin/busybox", "unzip", "/tmp/supersu/supersu.zip", "META-INF/com/google/android/*", "-d", "/tmp/supersu");')
+  #script.AppendExtra('run_program("/sbin/busybox", "sh", "/tmp/supersu/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/supersu/supersu.zip");')
 
   if OPTIONS.wipe_user_data:
     script.ShowProgress(0.1, 10)
